@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  /* Estilos para la lista de libros */
+  .books-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  .books-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .book-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .book-item:hover {
+    transform: translateY(-5px); /* Efecto de levantamiento al pasar el mouse */
+  }
+
+  .book-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .book-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .book-item p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .book-item a {
+    display: inline-block;
+    background-color: #09bda5;
+    color: #fff;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .book-item a:hover {
+    background-color: #07a68b;
+  }
+  h1{
+    color: hsl(300, 89%, 44%);
+  }
+  
+</style>
+<div class="container books-section2">
+  <div class="books-container">
+    <h1>Libros</h1>
+    <ul class="books-list">
+      {% for book in books %}
+      <li class="book-item">
+        <a href="{% url 'book_detail' book.id %}">
+          <strong>{{ book.title }}</strong> por {{ book.author }}
+          <p>{{ book.description }}</p>
+          <img src="{{ book.image.url }}" alt="{{ book.title }} image" width="100">
+          <a href="{{ book.link }}">Leer más</a>
+          <p>Creado el: {{ book.created }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

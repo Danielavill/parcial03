@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  /* Estilos para el formulario de creación de libros */
+  .create-book-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: hwb(303 58% 5%);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out; /* Animación de entrada */
+  }
+
+  .create-book-container h2 {
+    margin-bottom: 20px;
+    color: hsl(276, 90%, 44%);
+  }
+
+  .create-book-container form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .create-book-container label {
+    margin-bottom: 10px;
+    color: #666;
+  }
+
+  .create-book-container input[type="text"],
+  .create-book-container textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .create-book-container button {
+    padding: 10px 20px;
+    background-color: #09bda5;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .create-book-container button:hover {
+    background-color: #07a68b;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+<div class="container books-section2">
+  <div class="create-book-container">
+    <h2>Crear Libro</h2>
+  
+    <form action="{% url 'create_book' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="id_title">Título:</label>
+      <input type="text" id="id_title" name="title" required>
+  
+      <label for="id_author">Autor:</label>
+      <input type="text" id="id_author" name="author" required>
+  
+      <label for="id_description">Descripción:</label>
+      <textarea id="id_description" name="description" rows="4" required></textarea>
+  
+      <label for="id_image">Imagen:</label>
+      <input type="file" id="id_image" name="image" accept="image/*" required>
+  
+      <label for="id_link">Enlace:</label>
+      <input type="text" id="id_link" name="link">
+  
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+</div>
+
+
+
+{% endblock %}
+
+
+

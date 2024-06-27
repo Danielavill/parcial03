@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django CRUD</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body{
+            background-image: url("https://image.slidesdocs.com/responsive-images/background/antique-book-pages-aesthetic-textured-powerpoint-background_69bd1554d6__960_540.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+  .books-section2{
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar legibilidad */
+    padding: 50px 0;
+
+  }
+
+  span.helptext#id_username_helptext {
+  display: none;
+  }
+  span.helptext#id_password2_helptext {
+  display: none;
+  }
+  ul {
+  display: none;
+  }
+
+  
+
+        
+  </style>
+</head>
+<body>
+  {% include '_navbar.html' %}
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>
